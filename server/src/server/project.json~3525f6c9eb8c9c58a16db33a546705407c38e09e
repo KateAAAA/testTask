@@ -1,14 +1,4 @@
 {
-<<<<<<< HEAD
-  "buildOptions": {
-    "emitEntryPoint": true,
-    "preserveCompilationContext": true
-  },
-  "dependencies": {
-    "Microsoft.ApplicationInsights.AspNetCore": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.0.0-rc2-final",
-=======
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0-rc2-3002702",
@@ -16,7 +6,6 @@
     },
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
->>>>>>> origin/master
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
@@ -25,13 +14,6 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
-<<<<<<< HEAD
-    "Microsoft.NETCore.App": {
-      "version": "1.0.0-rc2-3002702",
-      "type": "platform"
-    }
-  },
-=======
     "Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.0.0-rc2-final"
   },
 
@@ -42,7 +24,6 @@
     }
   },
 
->>>>>>> origin/master
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
@@ -52,8 +33,6 @@
       ]
     }
   },
-<<<<<<< HEAD
-=======
 
   "buildOptions": {
     "emitEntryPoint": true,
@@ -64,7 +43,6 @@
     "gcServer": true
   },
 
->>>>>>> origin/master
   "publishOptions": {
     "include": [
       "wwwroot",
@@ -73,22 +51,8 @@
       "web.config"
     ]
   },
-<<<<<<< HEAD
-  "runtimeOptions": {
-    "gcServer": true
-  },
-  "scripts": {
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
-  },
-  "tools": {
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
-      "version": "1.0.0-preview1-final",
-      "imports": "portable-net45+win8+dnxcore50"
-    }
-=======
 
   "scripts": {
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
->>>>>>> origin/master
   }
 }
