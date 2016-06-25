@@ -11,11 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-<<<<<<< HEAD
       "launchUrl": "api/posts",
-=======
-      "launchUrl": "api/values",
->>>>>>> origin/master
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
