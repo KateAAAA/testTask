@@ -11,6 +11,9 @@ namespace server.Controllers
     [Route("api/[controller]")]
     public class PostsController : Controller
     {
+        PostsContext db1 = new PostsContext();
+        List<PostsContext> db = new List<PostsContext>();
+
         private static List<Post> posts = new List<Post>
         {
             new Post { Id = 0, Name = "Tomato Soup", Text = "Groceries" },
@@ -22,6 +25,8 @@ namespace server.Controllers
         [HttpGet]
         public IEnumerable<Post> Get()
         {
+            Debug.WriteLine(db.Count);
+            Debug.WriteLine(db1);
             return posts;
         }
         // GET api/values/{id} - пост по id
