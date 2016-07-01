@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using server.Models;
+using Server.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace server
+namespace Server
 {
     public class Startup
     {
@@ -37,7 +37,8 @@ namespace server
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=Server;Trusted_Connection=True;";
+            services.AddDbContext<ModelsContext>(options => options.UseSqlServer(connection));
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();

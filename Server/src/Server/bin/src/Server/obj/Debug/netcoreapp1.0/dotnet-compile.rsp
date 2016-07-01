@@ -1,5 +1,5 @@
---temp-output:C:\Users\Alexander\Desktop\Kate\Server\src\Server\obj\Debug\netcoreapp1.0\
---out:C:\Users\Alexander\Desktop\Kate\Server\src\Server\bin\Debug\netcoreapp1.0\Server.dll
+--temp-output:C:\Users\Alexander\Desktop\Kate\Server\src\Server\bin\src\Server\obj\Debug\netcoreapp1.0\
+--out:C:\Users\Alexander\Desktop\Kate\Server\src\Server\bin\src\Server\bin\Debug\netcoreapp1.0\Server.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -202,15 +202,12 @@
 --reference:C:\Users\Alexander\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"C:\Users\Alexander\Desktop\Kate\Server\src\Server\obj\Debug\netcoreapp1.0\Serverdotnet-compile.deps.json",Server.deps.json
+--resource:"C:\Users\Alexander\Desktop\Kate\Server\src\Server\bin\src\Server\obj\Debug\netcoreapp1.0\Serverdotnet-compile.deps.json",Server.deps.json
 C:\Users\Alexander\Desktop\Kate\Server\src\Server\Program.cs
 C:\Users\Alexander\Desktop\Kate\Server\src\Server\Startup.cs
-C:\Users\Alexander\Desktop\Kate\Server\src\Server\Controllers\PostsController.cs
-C:\Users\Alexander\Desktop\Kate\Server\src\Server\Migrations\20160624221637_ddfdf.cs
-C:\Users\Alexander\Desktop\Kate\Server\src\Server\Migrations\20160624221637_ddfdf.Designer.cs
+C:\Users\Alexander\Desktop\Kate\Server\src\Server\Controllers\ValuesController.cs
 C:\Users\Alexander\Desktop\Kate\Server\src\Server\Migrations\20160624222506_q.cs
 C:\Users\Alexander\Desktop\Kate\Server\src\Server\Migrations\20160624222506_q.Designer.cs
 C:\Users\Alexander\Desktop\Kate\Server\src\Server\Migrations\PostsContextModelSnapshot.cs
-C:\Users\Alexander\Desktop\Kate\Server\src\Server\Models\Blog.cs
-C:\Users\Alexander\Desktop\Kate\Server\src\Server\Models\ModelsContext.cs
 C:\Users\Alexander\Desktop\Kate\Server\src\Server\Models\Post.cs
+C:\Users\Alexander\Desktop\Kate\Server\src\Server\Models\PostsContext.cs

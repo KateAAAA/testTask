@@ -1,39 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using server.Models;
-using System.Diagnostics;
+using Server.Models;
 
-namespace server.Controllers
+namespace Server.Controllers
 {
     [Route("api/[controller]")]
     public class PostsController : Controller
     {
-        PostsContext db1 = new PostsContext();
-        List<PostsContext> db = new List<PostsContext>();
-
-        private static List<Post> posts = new List<Post>
+        private ModelsContext _dbContext;
+        public PostsController(ModelsContext dbContext)
         {
-            new Post { Id = 0, Name = "Tomato Soup", Text = "Groceries" },
-            new Post { Id = 1, Name = "Yo-yo", Text = "Toys" },
-            new Post { Id = 2, Name = "Hammer", Text = "Hardware" }
-        };
-
-        // GET api/posts - получаем все посты
-        [HttpGet]
-        public IEnumerable<Post> Get()
-        {
-            Debug.WriteLine(db.Count);
-            Debug.WriteLine(db1);
-            return posts;
+            _dbContext = dbContext;
         }
-        // GET api/values/{id} - пост по id
+
+        // GET api/posts
+        [HttpGet]
+        public List<Post> Get()
+        {
+            return _dbContext.Posts.ToList();
+        }
+
+        // GET api/posts/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var _posts = posts.FirstOrDefault(p => p.Id == id);
+            var _posts = _dbContext.Posts.FirstOrDefault(p => p.PostId == id);
 
             if (_posts == null)
             {
@@ -42,43 +37,42 @@ namespace server.Controllers
 
             return new OkObjectResult(_posts);
         }
-        
 
-        /*public Post Get(int id)
-        {
-            return posts[id];
-        }*/
-
-        // POST api/posts - добавление поста
+        // POST api/posts
         [HttpPost]
-        public void POST([FromBody]Post value)
+        public void Post([FromBody]Post value)
         {
-            posts.Add(value);
+            _dbContext.Posts.Add(value); 
+            _dbContext.SaveChanges(); // успешно, если value без PostId
         }
 
-        // PUT api/posts/5 - изменение поста
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Post value)
+        // PUT api/values/5
+        [HttpPut("{id}")] 
+        public IActionResult Put(int id, [FromBody]Post value) // edit
         {
-            var _posts = posts.FirstOrDefault(p => p.Id == id);
-
+            var _posts = _dbContext.Posts.FirstOrDefault(p => p.PostId == id);
             if (_posts == null)
             {
-                POST(value); // если такого элментенет, то добавлем его
-            }// иначе меняем
-            posts[id] = value;
+                return new OkObjectResult("error 404");
+                //Post(value); // если такого элментенет, то добавлем его
+            }// иначе меняем*/
+            else
+            {
+               
+                return new OkObjectResult(_posts);
+            }
+            //!!!
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var _posts = posts.FirstOrDefault(p => p.Id == id);
-
-            if (_posts != null)
-            {
-                posts.Remove(posts[id]);
-            }            
+            /*Post postdel= new Post() { PostId = id };
+            _dbContext.Posts.Attach(postdel);
+            _dbContext.Posts.
+                .DeleteObject(postdel);
+            _dbContext.Posts.SaveChanges();*/
         }
     }
 }
