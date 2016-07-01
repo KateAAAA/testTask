@@ -17,14 +17,14 @@ namespace Server.Controllers
             _dbContext = dbContext;
         }
 
-        // GET api/posts
+        // GET api/posts - получить список всех постов
         [HttpGet]
         public List<Post> Get()
         {
             return _dbContext.Posts.ToList();
         }
 
-        // GET api/posts/5
+        // GET api/posts/5 - получить пост номер N
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -38,7 +38,7 @@ namespace Server.Controllers
             return new OkObjectResult(_posts);
         }
 
-        // POST api/posts
+        // POST api/posts - добавить новый пост
         [HttpPost]
         public void Post([FromBody]Post value)
         {
@@ -46,33 +46,36 @@ namespace Server.Controllers
             _dbContext.SaveChanges(); // успешно, если value без PostId
         }
 
-        // PUT api/values/5
+        // PUT api/values/5 - изменить пост с номером N , если с таким номером нет, то добавит новый
         [HttpPut("{id}")] 
-        public IActionResult Put(int id, [FromBody]Post value) // edit
+        public void Put(int id, [FromBody]Post value) 
         {
             var _posts = _dbContext.Posts.FirstOrDefault(p => p.PostId == id);
-            if (_posts == null)
+           
+            if (_posts == null) // если поста с таким id нет, то добавляем
             {
-                return new OkObjectResult("error 404");
-                //Post(value); // если такого элментенет, то добавлем его
-            }// иначе меняем*/
-            else
-            {
-               
-                return new OkObjectResult(_posts);
+                Post(value);
             }
-            //!!!
+            else // иначе меняем
+            {
+                _dbContext.Posts.First(p => p.PostId == id).Name = value.Name;
+                _dbContext.Posts.First(p => p.PostId == id).Text = value.Text;
+                _dbContext.Posts.First(p => p.PostId == id).Author = value.Author;
+                _dbContext.SaveChanges(); 
+            }
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            /*Post postdel= new Post() { PostId = id };
-            _dbContext.Posts.Attach(postdel);
-            _dbContext.Posts.
-                .DeleteObject(postdel);
-            _dbContext.Posts.SaveChanges();*/
+            var _posts = _dbContext.Posts.FirstOrDefault(p => p.PostId == id);
+            if (_posts != null) // если пост с таким id есть, то удаляем
+            {
+                Debug.WriteLine(id);
+                _dbContext.Posts.Remove(_posts);
+                _dbContext.SaveChanges();
+            }
         }
     }
 }
