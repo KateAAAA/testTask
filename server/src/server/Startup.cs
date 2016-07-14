@@ -40,7 +40,7 @@ namespace Server
             var connection = @"Server=(localdb)\mssqllocaldb;Database=Server;Trusted_Connection=True;";
             services.AddDbContext<ModelsContext>(options => options.UseSqlServer(connection));
             services.AddApplicationInsightsTelemetry(Configuration);
-
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -55,6 +55,7 @@ namespace Server
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseMvc();
+
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Server.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Server.Controllers
 {
@@ -52,16 +53,13 @@ namespace Server.Controllers
         {
             var _posts = _dbContext.Posts.FirstOrDefault(p => p.PostId == id);
            
-            if (_posts == null) // если поста с таким id нет, то добавляем
-            {
-                Post(value);
-            }
-            else // иначе меняем
+            if (_posts != null) // если пост с таким id есть, то меняем
             {
                 _dbContext.Posts.First(p => p.PostId == id).Name = value.Name;
                 _dbContext.Posts.First(p => p.PostId == id).Text = value.Text;
                 _dbContext.Posts.First(p => p.PostId == id).Author = value.Author;
-                _dbContext.SaveChanges(); 
+                _dbContext.Posts.First(p => p.PostId == id).BlogId = value.BlogId;
+                _dbContext.SaveChanges();
             }
         }
 
@@ -72,7 +70,6 @@ namespace Server.Controllers
             var _posts = _dbContext.Posts.FirstOrDefault(p => p.PostId == id);
             if (_posts != null) // если пост с таким id есть, то удаляем
             {
-                Debug.WriteLine(id);
                 _dbContext.Posts.Remove(_posts);
                 _dbContext.SaveChanges();
             }

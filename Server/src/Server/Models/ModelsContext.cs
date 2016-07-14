@@ -13,5 +13,6 @@ namespace Server.Models
         { }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
