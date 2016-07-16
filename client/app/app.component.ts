@@ -20,9 +20,12 @@ const BLOGS: Blog[] = [
 export class AppComponent {
   title = 'БЛОГИ';
   blogs = BLOGS;
+  selectedBlog : Blog;
 
-  onSelect() {
-  	console.log("iluoioi");
+  onSelect(x:Blog) {
+  	this.selectedBlog = x;
+  }
+  onDelete(x:Blog) {
   }
   
 }

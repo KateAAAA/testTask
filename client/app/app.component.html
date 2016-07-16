@@ -1,4 +1,9 @@
 <h1>{{title}}</h1>
 <li *ngFor="let blog of blogs">
-	<div>{{blog.name}} <button (click)="onSelect(blog)">Редактировать</button></div>
+	<div>{{blog.name}} <button (click)="onSelect(blog)">Редактировать</button><button (click)="onDelete(blog)">Удалить</button></div>
 </li>
+
+<div *ngIf="selectedBlog">
+	<h2>{{selectedBlog.name}}</h2>
+	<input [(ngModel)]="selectedBlog.name" placeholder="name"/> 
+</div>
