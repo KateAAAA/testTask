@@ -1,17 +1,29 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-export class Hero {
+export class Blog {
   id: number;
   name: string;
 }
 
+const BLOGS: Blog[] = [
+  { id: 1, name: 'о собаках' },
+  { id: 2, name: 'о кошках' },
+  { id: 3, name: 'пицца' },
+  { id: 4, name: 'истории' }
+];
+
 @Component({
-    selector: 'my-app',
-    templateUrl: ['app/app.component.html']
+  selector: 'my-app',
+  templateUrl: 'app/app.component.html',
+  
 })
+export class AppComponent {
+  title = 'БЛОГИ';
+  blogs = BLOGS;
 
-
-export class AppComponent { 
-	title = 'Название';
-	blog = Blog{};
+  onSelect() {
+  	console.log("iluoioi");
+  }
+  
 }
+

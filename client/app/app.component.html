@@ -1,2 +1,4 @@
 <h1>{{title}}</h1>
-<p>{{post}}</p>
+<li *ngFor="let blog of blogs">
+	<div>{{blog.name}} <button (click)="onSelect(blog)">Редактировать</button></div>
+</li>
